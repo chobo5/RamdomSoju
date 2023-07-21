@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		399ABE06CE613EB800F05C7A /* Pods_RandomSoju.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1177D44360F14D4EF3CD4E7B /* Pods_RandomSoju.framework */; };
 		CA5B1B892A62FB850033AC7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B1B882A62FB850033AC7D /* AppDelegate.swift */; };
 		CA5B1B8B2A62FB850033AC7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B1B8A2A62FB850033AC7D /* SceneDelegate.swift */; };
 		CA5B1B8D2A62FB850033AC7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B1B8C2A62FB850033AC7D /* ViewController.swift */; };
 		CA5B1B902A62FB850033AC7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA5B1B8E2A62FB850033AC7D /* Main.storyboard */; };
 		CA5B1B922A62FB870033AC7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA5B1B912A62FB870033AC7D /* Assets.xcassets */; };
 		CA5B1B952A62FB870033AC7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA5B1B932A62FB870033AC7D /* LaunchScreen.storyboard */; };
+		CAF9BCAE2A64546E00B00E1C /* KaokaoAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9BCAD2A64546E00B00E1C /* KaokaoAPIViewModel.swift */; };
+		CAF9BCB02A6454A900B00E1C /* GeocodingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9BCAF2A6454A900B00E1C /* GeocodingModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,15 @@
 		CA5B1B912A62FB870033AC7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA5B1B942A62FB870033AC7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA5B1B962A62FB870033AC7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAF9BCAD2A64546E00B00E1C /* KaokaoAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaokaoAPIViewModel.swift; sourceTree = "<group>"; };
+		CAF9BCAF2A6454A900B00E1C /* GeocodingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodingModel.swift; sourceTree = "<group>"; };
+		CAF9BEE52A66B59C00B00E1C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		CAF9BEE72A66B5A700B00E1C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CAF9BEE92A66B5B200B00E1C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CAF9BEEB2A66B5BC00B00E1C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CAF9BEED2A66B5CA00B00E1C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		CAF9BEEE2A66B5D900B00E1C /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		CAF9BEEF2A66B5E500B00E1C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		D0A279EB5D92A4950FD23ABB /* Pods-RandomSoju.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomSoju.debug.xcconfig"; path = "Target Support Files/Pods-RandomSoju/Pods-RandomSoju.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -35,7 +45,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				399ABE06CE613EB800F05C7A /* Pods_RandomSoju.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +54,13 @@
 		5AA0C21F5E7388D24A90931F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CAF9BEEF2A66B5E500B00E1C /* libsqlite3.tbd */,
+				CAF9BEEE2A66B5D900B00E1C /* libxml2.tbd */,
+				CAF9BEED2A66B5CA00B00E1C /* libc++.tbd */,
+				CAF9BEEB2A66B5BC00B00E1C /* QuartzCore.framework */,
+				CAF9BEE92A66B5B200B00E1C /* CoreLocation.framework */,
+				CAF9BEE72A66B5A700B00E1C /* SystemConfiguration.framework */,
+				CAF9BEE52A66B59C00B00E1C /* OpenGLES.framework */,
 				1177D44360F14D4EF3CD4E7B /* Pods_RandomSoju.framework */,
 			);
 			name = Frameworks;
@@ -56,7 +72,6 @@
 				D0A279EB5D92A4950FD23ABB /* Pods-RandomSoju.debug.xcconfig */,
 				094869E82DB14588FBB8EA44 /* Pods-RandomSoju.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -84,12 +99,30 @@
 				CA5B1B882A62FB850033AC7D /* AppDelegate.swift */,
 				CA5B1B8A2A62FB850033AC7D /* SceneDelegate.swift */,
 				CA5B1B8C2A62FB850033AC7D /* ViewController.swift */,
+				CAF9BCB22A6454CA00B00E1C /* ViewModel */,
+				CAF9BCB12A6454B600B00E1C /* Model */,
 				CA5B1B8E2A62FB850033AC7D /* Main.storyboard */,
 				CA5B1B912A62FB870033AC7D /* Assets.xcassets */,
 				CA5B1B932A62FB870033AC7D /* LaunchScreen.storyboard */,
 				CA5B1B962A62FB870033AC7D /* Info.plist */,
 			);
 			path = RandomSoju;
+			sourceTree = "<group>";
+		};
+		CAF9BCB12A6454B600B00E1C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CAF9BCAF2A6454A900B00E1C /* GeocodingModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CAF9BCB22A6454CA00B00E1C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CAF9BCAD2A64546E00B00E1C /* KaokaoAPIViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,9 +240,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF9BCB02A6454A900B00E1C /* GeocodingModel.swift in Sources */,
 				CA5B1B8D2A62FB850033AC7D /* ViewController.swift in Sources */,
 				CA5B1B892A62FB850033AC7D /* AppDelegate.swift in Sources */,
 				CA5B1B8B2A62FB850033AC7D /* SceneDelegate.swift in Sources */,
+				CAF9BCAE2A64546E00B00E1C /* KaokaoAPIViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +390,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GDN2HC2T39;
@@ -385,6 +421,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GDN2HC2T39;

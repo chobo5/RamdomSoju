@@ -8,5 +8,7 @@ target 'RandomSoju' do
   # Pods for RandomSoju
 
 pod 'NMapsMap'
+pod 'Alamofire'
+pod 'SwiftyJSON', '~> 4.0'
 
 end

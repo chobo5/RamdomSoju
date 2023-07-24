@@ -14,7 +14,7 @@
 		CA5B1B922A62FB870033AC7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA5B1B912A62FB870033AC7D /* Assets.xcassets */; };
 		CA5B1B952A62FB870033AC7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA5B1B932A62FB870033AC7D /* LaunchScreen.storyboard */; };
 		CAF9BCAE2A64546E00B00E1C /* KaokaoAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9BCAD2A64546E00B00E1C /* KaokaoAPIViewModel.swift */; };
-		CAF9BCB02A6454A900B00E1C /* GeocodingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9BCAF2A6454A900B00E1C /* GeocodingModel.swift */; };
+		CAF9BCB02A6454A900B00E1C /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9BCAF2A6454A900B00E1C /* PlaceModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		CA5B1B942A62FB870033AC7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA5B1B962A62FB870033AC7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAF9BCAD2A64546E00B00E1C /* KaokaoAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaokaoAPIViewModel.swift; sourceTree = "<group>"; };
-		CAF9BCAF2A6454A900B00E1C /* GeocodingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodingModel.swift; sourceTree = "<group>"; };
+		CAF9BCAF2A6454A900B00E1C /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		CAF9BEE52A66B59C00B00E1C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		CAF9BEE72A66B5A700B00E1C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CAF9BEE92A66B5B200B00E1C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -112,7 +112,7 @@
 		CAF9BCB12A6454B600B00E1C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CAF9BCAF2A6454A900B00E1C /* GeocodingModel.swift */,
+				CAF9BCAF2A6454A900B00E1C /* PlaceModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -240,7 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAF9BCB02A6454A900B00E1C /* GeocodingModel.swift in Sources */,
+				CAF9BCB02A6454A900B00E1C /* PlaceModel.swift in Sources */,
 				CA5B1B8D2A62FB850033AC7D /* ViewController.swift in Sources */,
 				CA5B1B892A62FB850033AC7D /* AppDelegate.swift in Sources */,
 				CA5B1B8B2A62FB850033AC7D /* SceneDelegate.swift in Sources */,

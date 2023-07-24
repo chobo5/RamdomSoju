@@ -13,12 +13,14 @@ import SwiftyJSON
 
 
 class ViewController: UIViewController {
-    
+   
     private let locationManager = CLLocationManager()
     
     private var mapView = NMFMapView()
     
-    private var kakaoViewModel: KakaoAPIViewModel!
+    private var kakaoViewModel = KakaoAPIViewModel()
+    
+    private var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,26 +35,25 @@ class ViewController: UIViewController {
         self.mapView.positionMode = .direction
     }
     
-    func findPlaceWithKeyword(x: String, y: String, radius: Int, keyword: String) {
-        let headers: HTTPHeaders = ["Authorization": "KakaoAK e09fde1db2267df1c0fe44526622b1b8",
-                                    "content-type": "application/json;charset=UTF-8"]
-        let parameters: [String: Any] = ["y": y,
-                                      "x": x,
-                                      "radius": radius,
-                                      "query": keyword]
-        let url = "https://dapi.kakao.com/v2/local/search/keyword.json"
-        AF.request(url,
-                   method: .get,
-                   parameters: parameters,
-                   headers: headers)
-        .responseDecodable(of: Keyword.self) {response in
-            switch response.result {
-            case .success(let value):
-                print(value)
-            case .failure(let error):
-                print(error)
-            }
-        }
+    private func setupUICollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: self.view.frame.width * 0.8, height: self.view.frame.height/4)
+        
+        self.collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+        
+        self.view.addSubview(self.collectionView)
+        
+        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.collectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.25)
+            
+        ])
+        
         
     }
     
@@ -77,17 +78,45 @@ extension ViewController: CLLocationManagerDelegate {
             
             print("location", currentLatitude, currentLongitude)
             
-            let camerUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: currentLatitude, lng: currentLongitude), zoomTo: 17.0)
+            let camerUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: currentLatitude, lng: currentLongitude), zoomTo: 15.5)
             
-            let marker = NMFMarker()
-            marker.position = NMGLatLng(lat: currentLatitude, lng: currentLongitude)
             
-    
+
             camerUpdate.animation = .easeIn
             self.mapView.moveCamera(camerUpdate)
-            marker.mapView = mapView
             
-            findPlaceWithKeyword(x: String(describing: currentLatitude), y: String(describing: currentLongitude), radius: 500, keyword: "술집")
+            
+            
+            kakaoViewModel.findPlaceWithKeyword(x: String(describing: currentLongitude), y: String(describing: currentLatitude), radius: 500, page: 3, keyword: "술집") { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let placeResponse):
+                    guard let places = placeResponse.places else { return }
+                    self.kakaoViewModel.resultList = places.sorted{($0.distance ?? "0" < $1.distance ?? "1")}
+                    self.kakaoViewModel.resultList?.forEach({ place in
+            
+                        //마커 달아주기
+                        let marker = NMFMarker()
+                        guard let placeLat = place.y else { return }
+                        guard let placeLng = place.x else { return }
+                        
+                        guard let DoubleLat = Double(placeLat) else { return }
+                        guard let DoubleLng = Double(placeLng) else { return }
+                        marker.position = NMGLatLng(lat: DoubleLat, lng: DoubleLng )
+                        marker.mapView = self.mapView
+                    })
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            
+            
+            
+            
+            
             
             
         
@@ -167,5 +196,24 @@ extension ViewController: CLLocationManagerDelegate {
         
         present(requestLocationServiceAlert, animated: true)
     }
+}
+
+extension ViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if let count = self.kakaoViewModel.resultList?.count {
+            return count
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
+    }
+    
+}
+
+extension ViewController: UICollectionViewDelegate {
+    
 }
 

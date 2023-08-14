@@ -7,28 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61BC58C3D01DF3AA4359D318 /* Pods_RandomSoju.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1177D44360F14D4EF3CD4E7B /* Pods_RandomSoju.framework */; };
+		CA0D7C7C2A8377C9002D8B40 /* PlaceCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D7C7B2A8377C9002D8B40 /* PlaceCellViewModel.swift */; };
+		CA0D7C802A894215002D8B40 /* PlaceRouletteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D7C7F2A894215002D8B40 /* PlaceRouletteViewModel.swift */; };
+		CA0D7C822A89463D002D8B40 /* RouletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D7C812A89463D002D8B40 /* RouletteViewController.swift */; };
+		CA0D7C842A8A6305002D8B40 /* Roulette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D7C832A8A6305002D8B40 /* Roulette.swift */; };
+		CA51FD2F2A81192100B68085 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51FD2E2A81192100B68085 /* Helper.swift */; };
 		CA5B1B892A62FB850033AC7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B1B882A62FB850033AC7D /* AppDelegate.swift */; };
 		CA5B1B8B2A62FB850033AC7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B1B8A2A62FB850033AC7D /* SceneDelegate.swift */; };
 		CA5B1B8D2A62FB850033AC7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B1B8C2A62FB850033AC7D /* ViewController.swift */; };
-		CA5B1B902A62FB850033AC7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA5B1B8E2A62FB850033AC7D /* Main.storyboard */; };
 		CA5B1B922A62FB870033AC7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA5B1B912A62FB870033AC7D /* Assets.xcassets */; };
 		CA5B1B952A62FB870033AC7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA5B1B932A62FB870033AC7D /* LaunchScreen.storyboard */; };
-		CAF9BCAE2A64546E00B00E1C /* KaokaoAPIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9BCAD2A64546E00B00E1C /* KaokaoAPIViewModel.swift */; };
+		CAB5792F2A6EAD8D00BC4BEE /* UICollectionViewPlaceInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB5792E2A6EAD8D00BC4BEE /* UICollectionViewPlaceInfoCell.swift */; };
+		CAF9BCAE2A64546E00B00E1C /* PlaceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9BCAD2A64546E00B00E1C /* PlaceListViewModel.swift */; };
 		CAF9BCB02A6454A900B00E1C /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9BCAF2A6454A900B00E1C /* PlaceModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		094869E82DB14588FBB8EA44 /* Pods-RandomSoju.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomSoju.release.xcconfig"; path = "Target Support Files/Pods-RandomSoju/Pods-RandomSoju.release.xcconfig"; sourceTree = "<group>"; };
 		1177D44360F14D4EF3CD4E7B /* Pods_RandomSoju.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RandomSoju.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA0D7C7B2A8377C9002D8B40 /* PlaceCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCellViewModel.swift; sourceTree = "<group>"; };
+		CA0D7C7F2A894215002D8B40 /* PlaceRouletteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRouletteViewModel.swift; sourceTree = "<group>"; };
+		CA0D7C812A89463D002D8B40 /* RouletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteViewController.swift; sourceTree = "<group>"; };
+		CA0D7C832A8A6305002D8B40 /* Roulette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roulette.swift; sourceTree = "<group>"; };
+		CA51FD2E2A81192100B68085 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		CA5B1B852A62FB850033AC7D /* RandomSoju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomSoju.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA5B1B882A62FB850033AC7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA5B1B8A2A62FB850033AC7D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CA5B1B8C2A62FB850033AC7D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CA5B1B8F2A62FB850033AC7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CA5B1B912A62FB870033AC7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA5B1B942A62FB870033AC7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA5B1B962A62FB870033AC7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CAF9BCAD2A64546E00B00E1C /* KaokaoAPIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaokaoAPIViewModel.swift; sourceTree = "<group>"; };
+		CAB5792E2A6EAD8D00BC4BEE /* UICollectionViewPlaceInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewPlaceInfoCell.swift; sourceTree = "<group>"; };
+		CAF9BCAD2A64546E00B00E1C /* PlaceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewModel.swift; sourceTree = "<group>"; };
 		CAF9BCAF2A6454A900B00E1C /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		CAF9BEE52A66B59C00B00E1C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		CAF9BEE72A66B5A700B00E1C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -45,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61BC58C3D01DF3AA4359D318 /* Pods_RandomSoju.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,15 +110,26 @@
 			children = (
 				CA5B1B882A62FB850033AC7D /* AppDelegate.swift */,
 				CA5B1B8A2A62FB850033AC7D /* SceneDelegate.swift */,
-				CA5B1B8C2A62FB850033AC7D /* ViewController.swift */,
+				CAB579302A6EB3B300BC4BEE /* View */,
 				CAF9BCB22A6454CA00B00E1C /* ViewModel */,
 				CAF9BCB12A6454B600B00E1C /* Model */,
-				CA5B1B8E2A62FB850033AC7D /* Main.storyboard */,
+				CA51FD2E2A81192100B68085 /* Helper.swift */,
+				CA0D7C832A8A6305002D8B40 /* Roulette.swift */,
 				CA5B1B912A62FB870033AC7D /* Assets.xcassets */,
 				CA5B1B932A62FB870033AC7D /* LaunchScreen.storyboard */,
 				CA5B1B962A62FB870033AC7D /* Info.plist */,
 			);
 			path = RandomSoju;
+			sourceTree = "<group>";
+		};
+		CAB579302A6EB3B300BC4BEE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CA5B1B8C2A62FB850033AC7D /* ViewController.swift */,
+				CAB5792E2A6EAD8D00BC4BEE /* UICollectionViewPlaceInfoCell.swift */,
+				CA0D7C812A89463D002D8B40 /* RouletteViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		CAF9BCB12A6454B600B00E1C /* Model */ = {
@@ -120,7 +143,9 @@
 		CAF9BCB22A6454CA00B00E1C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				CAF9BCAD2A64546E00B00E1C /* KaokaoAPIViewModel.swift */,
+				CAF9BCAD2A64546E00B00E1C /* PlaceListViewModel.swift */,
+				CA0D7C7B2A8377C9002D8B40 /* PlaceCellViewModel.swift */,
+				CA0D7C7F2A894215002D8B40 /* PlaceRouletteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -187,7 +212,6 @@
 			files = (
 				CA5B1B952A62FB870033AC7D /* LaunchScreen.storyboard in Resources */,
 				CA5B1B922A62FB870033AC7D /* Assets.xcassets in Resources */,
-				CA5B1B902A62FB850033AC7D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,24 +265,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF9BCB02A6454A900B00E1C /* PlaceModel.swift in Sources */,
+				CA51FD2F2A81192100B68085 /* Helper.swift in Sources */,
+				CA0D7C822A89463D002D8B40 /* RouletteViewController.swift in Sources */,
 				CA5B1B8D2A62FB850033AC7D /* ViewController.swift in Sources */,
+				CAB5792F2A6EAD8D00BC4BEE /* UICollectionViewPlaceInfoCell.swift in Sources */,
+				CA0D7C7C2A8377C9002D8B40 /* PlaceCellViewModel.swift in Sources */,
+				CA0D7C842A8A6305002D8B40 /* Roulette.swift in Sources */,
 				CA5B1B892A62FB850033AC7D /* AppDelegate.swift in Sources */,
 				CA5B1B8B2A62FB850033AC7D /* SceneDelegate.swift in Sources */,
-				CAF9BCAE2A64546E00B00E1C /* KaokaoAPIViewModel.swift in Sources */,
+				CA0D7C802A894215002D8B40 /* PlaceRouletteViewModel.swift in Sources */,
+				CAF9BCAE2A64546E00B00E1C /* PlaceListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CA5B1B8E2A62FB850033AC7D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CA5B1B8F2A62FB850033AC7D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CA5B1B932A62FB870033AC7D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -396,9 +418,10 @@
 				DEVELOPMENT_TEAM = GDN2HC2T39;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RandomSoju/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 기반으로 주변정보를 제공하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -427,9 +450,10 @@
 				DEVELOPMENT_TEAM = GDN2HC2T39;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RandomSoju/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 기반으로 주변정보를 제공하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;

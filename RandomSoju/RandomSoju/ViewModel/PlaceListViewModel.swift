@@ -10,13 +10,16 @@ import Alamofire
 import SwiftyJSON
 import NMapsMap
 
-class KakaoAPIViewModel {
+class PlaceListViewModel {
     
-    var resultList: [Document]?
+    var resultList: Observable<[Document]>
     
-    var infoWindows: [NMFInfoWindow]?
+    init() {
+        self.resultList = Observable([])
+    }
     
-    func findPlaceWithKeyword(x: String, y: String, radius: Int, page:Int, keyword: String, completion: @escaping(Result<PlaceResponse, AFError>) -> Void) {
+    
+    func getPlaceWithKeyword(x: String, y: String, radius: Int, page:Int, keyword: String, completion: @escaping (Document) -> Void) {
         let headers: HTTPHeaders = ["Authorization": "KakaoAK e09fde1db2267df1c0fe44526622b1b8",
                                     "content-type": "application/json;charset=UTF-8"]
         let parameters: [String: Any] = ["y": y,
@@ -29,15 +32,23 @@ class KakaoAPIViewModel {
                    method: .get,
                    parameters: parameters,
                    headers: headers)
-        .responseDecodable(of: PlaceResponse.self) { response in
+        .responseDecodable(of: PlaceResponse.self) { [weak self] response in
+            guard let self = self else { return }
             switch response.result {
             case .success(let data):
-                completion(.success(data))
+                guard let places = data.places else { return }
+                self.resultList.value = places.sorted{($0.distance ?? "0" < $1.distance ?? "1")}
+                self.resultList.value?.forEach({ place in
+                completion(place)
+                })
             case .failure(let error):
-                completion(.failure(error))
+                print("Error getting places with keyword",error)
             }
         }
     }
+    
+    
+    
     
     
 }

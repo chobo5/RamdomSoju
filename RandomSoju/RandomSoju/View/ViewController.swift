@@ -7,9 +7,9 @@
 
 import UIKit
 import CoreLocation
-import NMapsMap
 import Alamofire
 import SwiftyJSON
+import NMapsMap
 
 
 class ViewController: UIViewController {
@@ -18,14 +18,29 @@ class ViewController: UIViewController {
     
     private var mapView = NMFMapView()
     
-    private var kakaoViewModel = KakaoAPIViewModel()
+    private var placeListViewModel = PlaceListViewModel()
     
     private var collectionView: UICollectionView!
+    
+    private var soolButton: UIButton!
+    
+    var rouletteViewModel = PlaceRouletteViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMapView()
+        setupButton()
+        setupCollectionView()
+        
         locationManager.delegate = self
+        
+
+        
+        self.placeListViewModel.resultList.bind { [weak self] _ in
+            guard let self = self else { return }
+            self.collectionView.reloadData()
+            print("placeListViewModel changed", self.placeListViewModel.resultList.value)
+        }
     }
     
     private func setupMapView() {
@@ -35,13 +50,23 @@ class ViewController: UIViewController {
         self.mapView.positionMode = .direction
     }
     
-    private func setupUICollectionView() {
+    private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: self.view.frame.width * 0.8, height: self.view.frame.height/4)
         
-        self.collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
+        layout.itemSize = CGSize(width: self.view.frame.width * 0.8, height: self.view.frame.height * 0.25)
+        layout.scrollDirection = .horizontal
+        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        let inset = (collectionView.bounds.width - layout.itemSize.width) / 2
+        layout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(UICollectionViewPlaceInfoCell.self, forCellWithReuseIdentifier: "placeInfoCell")
+        collectionView.backgroundColor = .clear
+        
+        collectionView.decelerationRate = .fast
+        collectionView.isPagingEnabled = false
+        
         
         self.view.addSubview(self.collectionView)
         
@@ -49,11 +74,42 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.collectionView.bottomAnchor.constraint(equalTo: self.soolButton.topAnchor, constant: -20),
             self.collectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.25)
             
         ])
         
+        
+    }
+    
+    private func setupButton() {
+        self.soolButton = UIButton(frame: self.view.frame)
+        
+        self.view.addSubview(self.soolButton)
+        
+        self.soolButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.soolButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.soolButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.3),
+            self.soolButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.05),
+            self.soolButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+            
+        ])
+        
+        self.soolButton.layer.cornerRadius = self.view.frame.width * 0.3 * 0.15
+        self.soolButton.layer.borderWidth = 1.0
+        self.soolButton.layer.borderColor = UIColor.gray.cgColor
+        
+        self.soolButton.setTitle("수우울", for: .normal)
+        self.soolButton.setTitleColor(.black, for: .normal)
+        self.soolButton.backgroundColor = .white
+        self.soolButton.addTarget(self, action: #selector(soolButtonTapped(sender:)), for: .touchUpInside)
+    }
+    
+    @objc func soolButtonTapped(sender: UIButton) {
+        let rouletteVC = RouletteViewController()
+        rouletteVC.rouletteViewModel = self.rouletteViewModel
+        self.present(rouletteVC, animated: true)
         
     }
     
@@ -86,32 +142,23 @@ extension ViewController: CLLocationManagerDelegate {
             self.mapView.moveCamera(camerUpdate)
             
             
-            
-            kakaoViewModel.findPlaceWithKeyword(x: String(describing: currentLongitude), y: String(describing: currentLatitude), radius: 500, page: 3, keyword: "술집") { [weak self] result in
+            self.placeListViewModel.getPlaceWithKeyword(x: String(describing: currentLongitude),
+                                                    y: String(describing: currentLatitude),
+                                                    radius: 500,
+                                                    page: 3,
+                                                    keyword: "술집") { [weak self] place in
                 guard let self = self else { return }
-                switch result {
-                case .success(let placeResponse):
-                    guard let places = placeResponse.places else { return }
-                    self.kakaoViewModel.resultList = places.sorted{($0.distance ?? "0" < $1.distance ?? "1")}
-                    self.kakaoViewModel.resultList?.forEach({ place in
-            
-                        //마커 달아주기
-                        let marker = NMFMarker()
-                        guard let placeLat = place.y else { return }
-                        guard let placeLng = place.x else { return }
-                        
-                        guard let DoubleLat = Double(placeLat) else { return }
-                        guard let DoubleLng = Double(placeLng) else { return }
-                        marker.position = NMGLatLng(lat: DoubleLat, lng: DoubleLng )
-                        marker.mapView = self.mapView
-                    })
-                    DispatchQueue.main.async {
-                        self.collectionView.reloadData()
-                    }
-                case .failure(let error):
-                    print(error)
-                }
+                let marker = NMFMarker()
+                guard let placeLat = place.y else { return }
+                guard let placeLng = place.x else { return }
+                
+                guard let DoubleLat = Double(placeLat) else { return }
+                guard let DoubleLng = Double(placeLng) else { return }
+                marker.position = NMGLatLng(lat: DoubleLat, lng: DoubleLng )
+                marker.mapView = self.mapView
             }
+            
+            //마커 달아주기
             
             
             
@@ -140,17 +187,14 @@ extension ViewController: CLLocationManagerDelegate {
     func checkUserDeviceLocationServiceAuthorization() {
         
         // 3.1 디바이스의 위치 서비스의 활성화 여부 체크
-        guard CLLocationManager.locationServicesEnabled() else {
-            // 시스템 설정으로 유도하는 커스텀 얼럿
-            showRequestLocationServiceAlert()
-            return
-        }
+//        guard CLLocationManager.locationServicesEnabled() else {
+//            // 시스템 설정으로 유도하는 커스텀 얼럿
+//            showRequestLocationServiceAlert()
+//            return
+//        }
         
         // 3.2 앱의 위치 서비스 이용 권한 확인
-        let authorizationStatus: CLAuthorizationStatus
-        
-        // 앱의 권한 상태 가져오는 코드
-        authorizationStatus = locationManager.authorizationStatus
+        let authorizationStatus = locationManager.authorizationStatus
         
         // 권한 상태값에 따라 분기처리를 수행하는 메서드 실행
         checkUserCurrentLocationAuthorization(authorizationStatus)
@@ -202,18 +246,64 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if let count = self.kakaoViewModel.resultList?.count {
+        if let count = self.placeListViewModel.resultList.value?.count {
             return count
+        } else {
+            return 0
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "placeInfoCell", for: indexPath) as! UICollectionViewPlaceInfoCell
+        if let place = self.placeListViewModel.resultList.value?[indexPath.row] {
+            cell.configure(with: place)
+            cell.cellViewModel = PlaceCellViewModel(place: place)
+            cell.cellViewModel?.delegate = self.rouletteViewModel
+            
+        }
+        return cell
+        
     }
     
 }
 
 extension ViewController: UICollectionViewDelegate {
     
+    
+    
+}
+
+
+
+
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        
+        
+        
+        // CollectionView Item Size
+        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
+        
+        // 이동한 x좌표 값과 item의 크기를 비교 후 페이징 값 설정
+        let estimatedIndex = scrollView.contentOffset.x / cellWidthIncludingSpacing
+        let index: Int
+        
+        // 스크롤 방향 체크
+        // item 절반 사이즈 만큼 스크롤로 판단하여 올림, 내림 처리
+        
+        if velocity.x > 0 {
+            index = Int(ceil(estimatedIndex))
+        } else if velocity.x < 0 {
+            index = Int(floor(estimatedIndex))
+        } else {
+            index = Int(round(estimatedIndex))
+        }
+        // 위 코드를 통해 페이징 될 좌표 값을 targetContentOffset에 대입
+        targetContentOffset.pointee = CGPoint(x: CGFloat(index) * cellWidthIncludingSpacing, y: 0)
+    }
 }
 

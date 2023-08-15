@@ -34,11 +34,11 @@ class ViewController: UIViewController {
         
         locationManager.delegate = self
         
-
+        
         
         self.placeListViewModel.resultList.bind { [weak self] _ in
             guard let self = self else { return }
-            self.collectionView.reloadData()
+            collectionView.reloadData()
             print("placeListViewModel changed", self.placeListViewModel.resultList.value)
         }
     }
@@ -255,12 +255,17 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "placeInfoCell", for: indexPath) as! UICollectionViewPlaceInfoCell
-        if let place = self.placeListViewModel.resultList.value?[indexPath.row] {
-            cell.configure(with: place)
-            cell.cellViewModel = PlaceCellViewModel(place: place)
-            cell.cellViewModel?.delegate = self.rouletteViewModel
-            
+        if let cellViewModel = self.placeListViewModel.cellViewModelForPlace(index: indexPath.row) {
+            cell.cellViewModel = cellViewModel
+            cell.configure(with: cellViewModel)
         }
+        
+//        if let place = self.placeListViewModel.resultList.value?[indexPath.row] {
+//            cell.cellViewModel = PlaceCellViewModel(place: place)
+//            cell.configure(with: place)
+//            cell.cellViewModel?.delegate = self.rouletteViewModel
+//
+//        }
         return cell
         
     }

@@ -83,7 +83,7 @@ class UICollectionViewPlaceInfoCell: UICollectionViewCell {
         
     }
     
-    func configure(with place: Document) {
+    func configure(with viewModel: PlaceCellViewModel) {
         contentView.backgroundColor = .white
         placeImageView.backgroundColor = .yellow
         
@@ -98,27 +98,42 @@ class UICollectionViewPlaceInfoCell: UICollectionViewCell {
         distanceLabel.textColor = .black
         phoneLabel.textColor = .black
         
-        placeNameLabel.text = place.placeName
-        if let distance = place.distance {
+        placeNameLabel.text = viewModel.place?.placeName
+        if let distance = viewModel.place?.distance {
             distanceLabel.text = distance + "m"
         }
         
-        phoneLabel.text = place.phone
+        phoneLabel.text = viewModel.place?.phone
         let url = URL(string: "https://t1.kakaocdn.net/thumb/T800x0.q80/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flocal%2FkakaomapPhoto%2Freview%2F09ffeaab0bbc9e6857affbb3e1775bfa15ef34dd%3Foriginal")
         placeImageView.kf.setImage(with: url)
         
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .medium)
         let normalImage = UIImage(systemName: "plus.app", withConfiguration: imageConfig)
         let selectedImage = UIImage(systemName: "checkmark.square.fill", withConfiguration: imageConfig)
-        addButton.setImage(normalImage, for: .normal)
         addButton.setImage(selectedImage, for: .selected)
+        addButton.setImage(normalImage, for: .normal)
+        
+        guard let isSelected = viewModel.place?.isSelected else { return }
+        if isSelected {
+            addButton.isSelected = true
+        } else {
+            addButton.isSelected = false
+        }
+        
+        
         addButton.addTarget(self, action: #selector(addButtonTapped(sender:)), for: .touchUpInside)
         
     }
     
     @objc func addButtonTapped(sender: UIButton) {
-        sender.isSelected.toggle()
-        self.cellViewModel?.updateSelectedPlace(button: sender)
+        self.cellViewModel?.updateSelectedPlace()
+        guard let isSelected = self.cellViewModel?.place?.isSelected else {print("famlk"); return }
+        if isSelected {
+            sender.isSelected = true
+        } else {
+            sender.isSelected = false
+        }
+        
         
     }
         

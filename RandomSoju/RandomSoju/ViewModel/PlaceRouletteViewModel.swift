@@ -7,12 +7,14 @@
 
 import Foundation
 
-class PlaceRouletteViewModel: UpdatePlace {
+class PlaceRouletteViewModel: UpdateRouletteList {
     
     var rouletteList: Observable<[Document]>
     
+    
     init() {
         self.rouletteList = Observable([])
+        
     }
     
     func addPlace(place: Document) {
@@ -25,4 +27,16 @@ class PlaceRouletteViewModel: UpdatePlace {
         self.rouletteList.value?.remove(at: index)
         
     }
+    
+    func makeSectionList() -> [String] {
+        var tempArray: [String] = []
+        
+        tempArray = self.rouletteList.value?.map({ place in
+            return place.placeName
+        }) as! [String]
+        
+        return tempArray
+    }
+    
+    
 }

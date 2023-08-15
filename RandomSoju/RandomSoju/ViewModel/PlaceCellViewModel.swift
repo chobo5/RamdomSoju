@@ -12,10 +12,14 @@ import Alamofire
 class PlaceCellViewModel {
     var place: Document?
     
-    weak var delegate: UpdatePlace?
+    
+    weak var delegate: UpdateRouletteList?
+    
+    var isSelectedChanged: ((Document) -> Void)?
     
     init(place: Document) {
         self.place = place
+        
 //        if let placeUrl = self.place?.placeURL {
 //            crawlPlaceImage(urlStr: placeUrl)
 //        }
@@ -23,15 +27,16 @@ class PlaceCellViewModel {
     
     
     
-    func updateSelectedPlace(button: UIButton) {
+    func updateSelectedPlace() {
+        self.place?.isSelected.toggle()
         if let place = self.place {
-            if button.isSelected == true {
-                self.delegate?.addPlace(place: place)
+            isSelectedChanged?(place) //placeListViewModel 데이터 변경
+            if place.isSelected == true {
+                self.delegate?.addPlace(place: place) //rouletteViewModel 데이터 변경
             } else {
-                self.delegate?.removePlace(place: place)
+                self.delegate?.removePlace(place: place) //rouletteViewModel 데이터 변경
             }
         }
-        print("self.place",self.place)
     }
     
     
@@ -67,7 +72,7 @@ class PlaceCellViewModel {
    
 }
 
-protocol UpdatePlace: AnyObject {
+protocol UpdateRouletteList: AnyObject {
     func addPlace(place: Document)
     func removePlace(place: Document)
 }

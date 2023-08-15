@@ -16,6 +16,7 @@ class PlaceListViewModel {
     
     init() {
         self.resultList = Observable([])
+        
     }
     
     
@@ -47,6 +48,26 @@ class PlaceListViewModel {
         }
     }
     
+    func cellViewModelForPlace(index: Int) -> PlaceCellViewModel? {
+        guard let place = self.resultList.value?[index] else { return nil}
+        let cellViewModel = PlaceCellViewModel(place: place)
+        
+        // 클로저 설정
+        cellViewModel.isSelectedChanged = { [weak self] updatedPlace in
+            if let self = self {
+                // 배열에서 해당 항목을 찾아 업데이트
+                if let index = self.resultList.value?.firstIndex(where: { $0.placeName == updatedPlace.placeName }) {
+                    self.resultList.value?[index] = updatedPlace
+                }
+            }
+        }
+        
+        return cellViewModel
+        
+        
+    }
+                                               
+                                              
     
     
     

@@ -11,7 +11,7 @@
 		CA0D7C7C2A8377C9002D8B40 /* PlaceCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D7C7B2A8377C9002D8B40 /* PlaceCellViewModel.swift */; };
 		CA0D7C802A894215002D8B40 /* PlaceRouletteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D7C7F2A894215002D8B40 /* PlaceRouletteViewModel.swift */; };
 		CA0D7C822A89463D002D8B40 /* RouletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D7C812A89463D002D8B40 /* RouletteViewController.swift */; };
-		CA0D7C842A8A6305002D8B40 /* Roulette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D7C832A8A6305002D8B40 /* Roulette.swift */; };
+		CA0D7C842A8A6305002D8B40 /* RouletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D7C832A8A6305002D8B40 /* RouletteView.swift */; };
 		CA51FD2F2A81192100B68085 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51FD2E2A81192100B68085 /* Helper.swift */; };
 		CA5B1B892A62FB850033AC7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B1B882A62FB850033AC7D /* AppDelegate.swift */; };
 		CA5B1B8B2A62FB850033AC7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B1B8A2A62FB850033AC7D /* SceneDelegate.swift */; };
@@ -29,7 +29,7 @@
 		CA0D7C7B2A8377C9002D8B40 /* PlaceCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCellViewModel.swift; sourceTree = "<group>"; };
 		CA0D7C7F2A894215002D8B40 /* PlaceRouletteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRouletteViewModel.swift; sourceTree = "<group>"; };
 		CA0D7C812A89463D002D8B40 /* RouletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteViewController.swift; sourceTree = "<group>"; };
-		CA0D7C832A8A6305002D8B40 /* Roulette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roulette.swift; sourceTree = "<group>"; };
+		CA0D7C832A8A6305002D8B40 /* RouletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteView.swift; sourceTree = "<group>"; };
 		CA51FD2E2A81192100B68085 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		CA5B1B852A62FB850033AC7D /* RandomSoju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomSoju.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA5B1B882A62FB850033AC7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 				CAF9BCB22A6454CA00B00E1C /* ViewModel */,
 				CAF9BCB12A6454B600B00E1C /* Model */,
 				CA51FD2E2A81192100B68085 /* Helper.swift */,
-				CA0D7C832A8A6305002D8B40 /* Roulette.swift */,
+				CA0D7C832A8A6305002D8B40 /* RouletteView.swift */,
 				CA5B1B912A62FB870033AC7D /* Assets.xcassets */,
 				CA5B1B932A62FB870033AC7D /* LaunchScreen.storyboard */,
 				CA5B1B962A62FB870033AC7D /* Info.plist */,
@@ -270,7 +270,7 @@
 				CA5B1B8D2A62FB850033AC7D /* ViewController.swift in Sources */,
 				CAB5792F2A6EAD8D00BC4BEE /* UICollectionViewPlaceInfoCell.swift in Sources */,
 				CA0D7C7C2A8377C9002D8B40 /* PlaceCellViewModel.swift in Sources */,
-				CA0D7C842A8A6305002D8B40 /* Roulette.swift in Sources */,
+				CA0D7C842A8A6305002D8B40 /* RouletteView.swift in Sources */,
 				CA5B1B892A62FB850033AC7D /* AppDelegate.swift in Sources */,
 				CA5B1B8B2A62FB850033AC7D /* SceneDelegate.swift in Sources */,
 				CA0D7C802A894215002D8B40 /* PlaceRouletteViewModel.swift in Sources */,

@@ -34,6 +34,7 @@ struct Document: Codable {
 //    let phone, categoryGroupCode, categoryGroupName,
     let x: String?, y: String?
     let imageUrl: String?
+    var isSelected: Bool = false
 
     enum CodingKeys: String, CodingKey {
         case placeName = "place_name"
@@ -47,6 +48,7 @@ struct Document: Codable {
 //        case categoryGroupName = "category_group_name"
         case imageUrl
         case x, y
+
     }
 }
 

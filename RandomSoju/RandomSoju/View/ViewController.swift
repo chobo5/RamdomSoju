@@ -39,7 +39,8 @@ class ViewController: UIViewController {
         self.placeListViewModel.resultList.bind { [weak self] _ in
             guard let self = self else { return }
             collectionView.reloadData()
-            print("placeListViewModel changed", self.placeListViewModel.resultList.value)
+//            collectionView.reloadItems(at: [IndexPath(item: <#T##Int#>, section: 0)])
+            print("placeListViewModel changed")
         }
     }
     
@@ -258,7 +259,9 @@ extension ViewController: UICollectionViewDataSource {
         if let cellViewModel = self.placeListViewModel.cellViewModelForPlace(index: indexPath.row) {
             cell.cellViewModel = cellViewModel
             cell.configure(with: cellViewModel)
+            
         }
+        cell.cellViewModel?.delegate = self.rouletteViewModel
         
 //        if let place = self.placeListViewModel.resultList.value?[indexPath.row] {
 //            cell.cellViewModel = PlaceCellViewModel(place: place)

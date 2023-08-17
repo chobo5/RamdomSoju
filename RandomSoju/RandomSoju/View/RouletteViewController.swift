@@ -16,13 +16,13 @@ class RouletteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        print("rouletteList", self.rouletteViewModel?.rouletteList.value)
+        print("rouletteList", self.rouletteViewModel?.rouletteList.value?.count)
         setupRouletteView()
     }
     
     func setupRouletteView() {
         self.view.addSubview(rouletteView)
-        self.rouletteView.backgroundColor = .green
+        self.rouletteView.backgroundColor = .clear
         self.rouletteView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.rouletteView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -34,6 +34,7 @@ class RouletteViewController: UIViewController {
         guard let rouletteViewModel = rouletteViewModel else { return }
     
         rouletteView.sections = rouletteViewModel.makeSectionList()
+        print("sections",rouletteView.sections)
         
     }
 }

@@ -19,12 +19,14 @@ class PlaceRouletteViewModel: UpdateRouletteList {
     
     func addPlace(place: Document) {
         self.rouletteList.value?.append(place)
+        print("count",self.rouletteList.value?.count)
     }
     
     func removePlace(place: Document) {
         
         guard let index = self.rouletteList.value?.firstIndex(where: {$0.placeName == place.placeName}) else { return }
         self.rouletteList.value?.remove(at: index)
+        print("count",self.rouletteList.value?.count)
         
     }
     

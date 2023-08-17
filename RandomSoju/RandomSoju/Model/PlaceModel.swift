@@ -11,7 +11,6 @@ import Foundation
 struct PlaceResponse: Codable {
 //    let meta: Meta?
     let places: [Document]?
-    
     enum CodingKeys: String, CodingKey {
         case places = "documents"
     }

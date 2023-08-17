@@ -7,24 +7,8 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "80A94073-23B7-4D79-B9FF-AB9019081F57"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RandomSoju/ViewModel/PlaceCellViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "PlaceCellViewModel"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "206F70D0-1F7D-4C0A-8FEE-E31621F9C1AD"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RandomSoju/View/UICollectionViewPlaceInfoCell.swift"
@@ -34,13 +18,45 @@
             endingLineNumber = "129"
             landmarkName = "addButtonTapped(sender:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "206F70D0-1F7D-4C0A-8FEE-E31621F9C1AD - 827b91a47ad0760c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RandomSoju.UICollectionViewPlaceInfoCell.configure(with: RandomSoju.PlaceCellViewModel) -&gt; ()"
+                  moduleName = "RandomSoju"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wonjun-yeon/Desktop/RamdomSoju/RandomSoju/RandomSoju/View/UICollectionViewPlaceInfoCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "5216">
+               </Location>
+               <Location
+                  uuid = "206F70D0-1F7D-4C0A-8FEE-E31621F9C1AD - 79e544fec41e6067"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RandomSoju.UICollectionViewPlaceInfoCell.addButtonTapped(sender: __C.UIButton) -&gt; ()"
+                  moduleName = "RandomSoju"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wonjun-yeon/Desktop/RamdomSoju/RandomSoju/RandomSoju/View/UICollectionViewPlaceInfoCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "67945C2C-2977-4E71-9728-70704B5FF787"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RandomSoju/View/UICollectionViewPlaceInfoCell.swift"
@@ -50,13 +66,45 @@
             endingLineNumber = "130"
             landmarkName = "addButtonTapped(sender:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "67945C2C-2977-4E71-9728-70704B5FF787 - 827b91a47ad07663"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RandomSoju.UICollectionViewPlaceInfoCell.configure(with: RandomSoju.PlaceCellViewModel) -&gt; ()"
+                  moduleName = "RandomSoju"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wonjun-yeon/Desktop/RamdomSoju/RandomSoju/RandomSoju/View/UICollectionViewPlaceInfoCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "5232">
+               </Location>
+               <Location
+                  uuid = "67945C2C-2977-4E71-9728-70704B5FF787 - 79e544fec41e6008"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RandomSoju.UICollectionViewPlaceInfoCell.addButtonTapped(sender: __C.UIButton) -&gt; ()"
+                  moduleName = "RandomSoju"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wonjun-yeon/Desktop/RamdomSoju/RandomSoju/RandomSoju/View/UICollectionViewPlaceInfoCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "176">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "C978D9DD-39D4-412A-9416-D953F0EBEA3D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RandomSoju/View/UICollectionViewPlaceInfoCell.swift"
@@ -66,22 +114,134 @@
             endingLineNumber = "132"
             landmarkName = "addButtonTapped(sender:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C978D9DD-39D4-412A-9416-D953F0EBEA3D - 827b91a47ad076e7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RandomSoju.UICollectionViewPlaceInfoCell.configure(with: RandomSoju.PlaceCellViewModel) -&gt; ()"
+                  moduleName = "RandomSoju"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wonjun-yeon/Desktop/RamdomSoju/RandomSoju/RandomSoju/View/UICollectionViewPlaceInfoCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "5432">
+               </Location>
+               <Location
+                  uuid = "C978D9DD-39D4-412A-9416-D953F0EBEA3D - 79e544fec41e60ca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RandomSoju.UICollectionViewPlaceInfoCell.addButtonTapped(sender: __C.UIButton) -&gt; ()"
+                  moduleName = "RandomSoju"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wonjun-yeon/Desktop/RamdomSoju/RandomSoju/RandomSoju/View/UICollectionViewPlaceInfoCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "132"
+                  endingLineNumber = "132"
+                  offsetFromSymbolStart = "452">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "ED8698CA-7B15-4B49-8AF6-9688B693557A"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RandomSoju/ViewModel/PlaceCellViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "updateSelectedPlace()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "ED8698CA-7B15-4B49-8AF6-9688B693557A - 5439e2e219e3c6f3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RandomSoju.PlaceCellViewModel.updateSelectedPlace() -&gt; ()"
+                  moduleName = "RandomSoju"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wonjun-yeon/Desktop/RamdomSoju/RandomSoju/RandomSoju/ViewModel/PlaceCellViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "ED8698CA-7B15-4B49-8AF6-9688B693557A - 5439e2e219e3c612"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RandomSoju.PlaceCellViewModel.updateSelectedPlace() -&gt; ()"
+                  moduleName = "RandomSoju"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wonjun-yeon/Desktop/RamdomSoju/RandomSoju/RandomSoju/ViewModel/PlaceCellViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "196">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "63F7E982-0052-4755-AEE4-F5C3BFA26BD8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RandomSoju/View/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "63F7E982-0052-4755-AEE4-F5C3BFA26BD8 - 93d6c09a8bb3fad"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;RandomSoju.Document&gt;&gt;) -&gt; () in RandomSoju.ViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "RandomSoju"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wonjun-yeon/Desktop/RamdomSoju/RandomSoju/RandomSoju/View/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "200">
+               </Location>
+               <Location
+                  uuid = "63F7E982-0052-4755-AEE4-F5C3BFA26BD8 - 93d6c09a8bb3f6f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;RandomSoju.Document&gt;&gt;) -&gt; () in RandomSoju.ViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "RandomSoju"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wonjun-yeon/Desktop/RamdomSoju/RandomSoju/RandomSoju/View/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "368">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

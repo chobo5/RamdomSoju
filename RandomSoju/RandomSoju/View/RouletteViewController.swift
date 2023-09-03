@@ -8,7 +8,7 @@
 import UIKit
 
 class RouletteViewController: UIViewController {
-    
+   
     var rouletteViewModel: PlaceRouletteViewModel?
     
     var rouletteView = RouletteView()
@@ -21,6 +21,8 @@ class RouletteViewController: UIViewController {
     }
     
     func setupRouletteView() {
+        rouletteView.delegate = self
+        
         self.view.addSubview(rouletteView)
         self.rouletteView.backgroundColor = .clear
         self.rouletteView.translatesAutoresizingMaskIntoConstraints = false
@@ -36,5 +38,20 @@ class RouletteViewController: UIViewController {
         rouletteView.sections = rouletteViewModel.makeSectionList()
         print("sections",rouletteView.sections)
         
+        
     }
+    
+}
+
+extension RouletteViewController: RouletteViewDelegate {
+    
+    func getResultFromRoulette(_ place: String) {
+        let resultVC = ResultViewController()
+        resultVC.modalPresentationStyle = .overFullScreen
+        let placeModel = self.rouletteViewModel?.getPlaceWithName(placeName: place)
+        resultVC.viewModel = ResultViewModel(place: placeModel)
+        self.present(resultVC, animated: true)
+    }
+    
+    
 }

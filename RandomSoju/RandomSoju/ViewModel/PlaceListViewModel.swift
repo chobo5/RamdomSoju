@@ -12,7 +12,7 @@ import NMapsMap
 
 class PlaceListViewModel {
     
-    var resultList: Observable<[Document]>
+    var resultList: Observable<[PlaceModel]>
     
     init() {
         self.resultList = Observable([])
@@ -20,7 +20,7 @@ class PlaceListViewModel {
     }
     
     
-    func getPlaceWithKeyword(x: String, y: String, radius: Int, page:Int, keyword: String, completion: @escaping (Document) -> Void) {
+    func getPlaceWithKeyword(x: String, y: String, radius: Int, page:Int, keyword: String, completion: @escaping (PlaceModel) -> Void) {
         let headers: HTTPHeaders = ["Authorization": "KakaoAK e09fde1db2267df1c0fe44526622b1b8",
                                     "content-type": "application/json;charset=UTF-8"]
         let parameters: [String: Any] = ["y": y,
@@ -63,7 +63,33 @@ class PlaceListViewModel {
         }
         
         return cellViewModel
-        
+    }
+    
+    func getImagesByPlaceName() {
+        resultList.value?.forEach({ place in
+            guard let placeName = place.placeName else { return }
+            let headers: HTTPHeaders = ["Authorization": "KakaoAK e09fde1db2267df1c0fe44526622b1b8",
+                                        "content-type": "application/json;charset=UTF-8"]
+            let parameters: [String: Any] = ["query": placeName]
+            let url = "https://dapi.kakao.com/v2/search/image"
+            AF.request(url,
+                       method: .get,
+                       parameters: parameters,
+                       headers: headers)
+            .responseDecodable(of: ImageResponse.self) { [weak self] response in
+                guard let self = self else { return }
+                switch response.result {
+                case .success(let data):
+                    print(data.images)
+                case .failure(let error):
+                    print("failed to get imageURL", error)
+                }
+                
+                
+            }
+            
+            
+        })
         
     }
                                                

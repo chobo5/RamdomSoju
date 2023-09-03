@@ -10,7 +10,6 @@ import Kingfisher
 
 class UICollectionViewPlaceInfoCell: UICollectionViewCell {
     
-    var placeImageView: UIImageView!
     var placeNameLabel: UILabel!
     var distanceLabel: UILabel!
     var phoneLabel: UILabel!
@@ -28,48 +27,38 @@ class UICollectionViewPlaceInfoCell: UICollectionViewCell {
      }
     
     private func setupUI() {
-        self.placeImageView = UIImageView()
+        
         self.placeNameLabel = UILabel()
         self.distanceLabel = UILabel()
         self.phoneLabel = UILabel()
         self.addButton = UIButton()
         
-        self.contentView.addSubview(placeImageView)
         self.contentView.addSubview(placeNameLabel)
         self.contentView.addSubview(distanceLabel)
         self.contentView.addSubview(phoneLabel)
         self.contentView.addSubview(addButton)
         
-        self.placeImageView.translatesAutoresizingMaskIntoConstraints = false
         self.placeNameLabel.translatesAutoresizingMaskIntoConstraints = false
         self.distanceLabel.translatesAutoresizingMaskIntoConstraints = false
         self.phoneLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addButton.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([
-            self.placeImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            self.placeImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            self.placeImageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            self.placeImageView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.7)
-
-        ])
         
         NSLayoutConstraint.activate([
-            self.placeNameLabel.topAnchor.constraint(equalTo: self.placeImageView.bottomAnchor),
-            self.placeNameLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10),
-
+            self.placeNameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 7),
+            self.placeNameLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
         
         NSLayoutConstraint.activate([
             self.distanceLabel.topAnchor.constraint(equalTo: self.placeNameLabel.bottomAnchor, constant: 5),
-            self.distanceLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10),
+            self.distanceLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 5),
 
 
         ])
         
         NSLayoutConstraint.activate([
-            self.phoneLabel.topAnchor.constraint(equalTo: self.placeNameLabel.bottomAnchor, constant: 5),
-            self.phoneLabel.leadingAnchor.constraint(equalTo: self.distanceLabel.trailingAnchor, constant: 10),
+            self.phoneLabel.topAnchor.constraint(equalTo: self.distanceLabel.bottomAnchor, constant: 5),
+            self.phoneLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 5),
 
 
         ])
@@ -77,7 +66,7 @@ class UICollectionViewPlaceInfoCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             self.addButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10),
             self.addButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -10),
-            self.addButton.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.2),
+            self.addButton.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.35),
             self.addButton.widthAnchor.constraint(equalTo: self.addButton.heightAnchor, multiplier: 1)
         ])
         
@@ -85,12 +74,13 @@ class UICollectionViewPlaceInfoCell: UICollectionViewCell {
     
     func configure(with viewModel: PlaceCellViewModel) {
         contentView.backgroundColor = .white
-        placeImageView.backgroundColor = .yellow
         
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = contentView.frame.height * 0.15
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
         
-        placeNameLabel.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        placeNameLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         distanceLabel.font = UIFont.systemFont(ofSize: 13)
         phoneLabel.font = UIFont.systemFont(ofSize: 13)
         
@@ -104,8 +94,6 @@ class UICollectionViewPlaceInfoCell: UICollectionViewCell {
         }
         
         phoneLabel.text = viewModel.place?.phone
-        let url = URL(string: "https://t1.kakaocdn.net/thumb/T800x0.q80/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flocal%2FkakaomapPhoto%2Freview%2F09ffeaab0bbc9e6857affbb3e1775bfa15ef34dd%3Foriginal")
-        placeImageView.kf.setImage(with: url)
         
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .medium)
         let normalImage = UIImage(systemName: "plus.app", withConfiguration: imageConfig)

@@ -10,7 +10,7 @@ import Foundation
 
 struct PlaceResponse: Codable {
 //    let meta: Meta?
-    let places: [Document]?
+    let places: [PlaceModel]?
     enum CodingKeys: String, CodingKey {
         case places = "documents"
     }
@@ -26,7 +26,7 @@ struct PlaceResponse: Codable {
 //   }
 
 // MARK: - Document
-struct Document: Codable {
+struct PlaceModel: Codable {
     let placeName, distance, phone: String?
     let placeURL: String?
 //    let categoryName, addressName, roadAddressName, id: String?
@@ -48,6 +48,45 @@ struct Document: Codable {
         case imageUrl
         case x, y
 
+    }
+}
+
+// MARK: - ImageResponse
+struct ImageResponse: Codable {
+    let images: [ImageModel]?
+    
+    enum CodingKeys: String, CodingKey {
+        case images = "documents"
+    }
+}
+
+//
+// To parse values from Alamofire responses:
+//
+//   Alamofire.request(url).responseDocument { response in
+//     if let document = response.result.value {
+//       ...
+//     }
+//   }
+
+// MARK: - ImageModel
+struct ImageModel: Codable {
+    let collection: String?
+    let thumbnailURL: String?
+    let imageURL: String?
+    let width, height: Int?
+    let displaySitename: String?
+    let docURL: String?
+    let datetime: String?
+
+    enum CodingKeys: String, CodingKey {
+        case collection
+        case thumbnailURL = "thumbnail_url"
+        case imageURL = "image_url"
+        case width, height
+        case displaySitename = "display_sitename"
+        case docURL = "doc_url"
+        case datetime
     }
 }
 

@@ -9,8 +9,11 @@ import UIKit
 
 extension UIColor {
     class var rouletteRed: UIColor? { return UIColor(named: "rouletteRed")}
-    class var rouletteGreen: UIColor? { return UIColor(named: "rouletteGreen")}
     class var rouletteBlack: UIColor? { return UIColor(named: "rouletteBlack")}
     class var rouletteIvory: UIColor? { return UIColor(named: "rouletteIvory")}
     class var rouletteBrown: UIColor? { return UIColor(named: "rouletteBrown")}
+    class var rouletteBlue: UIColor? { return UIColor(named: "rouletteBlue")}
+    class var rouletteBlue2: UIColor? { return UIColor(named: "rouletteBlue2")}
+    class var rouletteBlue3: UIColor? { return UIColor(named: "rouletteBlue3")}
+    class var rouletteBlue4: UIColor? { return UIColor(named: "rouletteBlue4")}
 }

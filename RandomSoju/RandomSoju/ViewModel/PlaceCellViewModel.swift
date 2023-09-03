@@ -10,14 +10,14 @@ import SwiftSoup
 import Alamofire
 
 class PlaceCellViewModel {
-    var place: Document?
+    var place: PlaceModel?
     
     
     weak var delegate: UpdateRouletteList?
     
-    var isSelectedChanged: ((Document) -> Void)?
+    var isSelectedChanged: ((PlaceModel) -> Void)?
     
-    init(place: Document) {
+    init(place: PlaceModel) {
         self.place = place
     
     }
@@ -44,6 +44,6 @@ class PlaceCellViewModel {
 }
 
 protocol UpdateRouletteList: AnyObject {
-    func addPlace(place: Document)
-    func removePlace(place: Document)
+    func addPlace(place: PlaceModel)
+    func removePlace(place: PlaceModel)
 }

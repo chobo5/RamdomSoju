@@ -9,7 +9,7 @@ import Foundation
 
 class PlaceRouletteViewModel: UpdateRouletteList {
     
-    var rouletteList: Observable<[Document]>
+    var rouletteList: Observable<[PlaceModel]>
     
     
     init() {
@@ -17,12 +17,12 @@ class PlaceRouletteViewModel: UpdateRouletteList {
         
     }
     
-    func addPlace(place: Document) {
+    func addPlace(place: PlaceModel) {
         self.rouletteList.value?.append(place)
         print("count",self.rouletteList.value?.count)
     }
     
-    func removePlace(place: Document) {
+    func removePlace(place: PlaceModel) {
         
         guard let index = self.rouletteList.value?.firstIndex(where: {$0.placeName == place.placeName}) else { return }
         self.rouletteList.value?.remove(at: index)
@@ -38,6 +38,12 @@ class PlaceRouletteViewModel: UpdateRouletteList {
         }) as! [String]
         
         return tempArray
+    }
+    
+    func getPlaceWithName(placeName: String) -> PlaceModel? {
+        guard let placeModel = self.rouletteList.value?.first(where: {$0.placeName == placeName}) else { return nil}
+        
+        return placeModel
     }
     
     

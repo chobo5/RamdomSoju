@@ -24,6 +24,8 @@ class ViewController: UIViewController {
     
     private var soolButton: UIButton!
     
+    private var refreshButton: UIButton!
+    
     var rouletteViewModel = PlaceRouletteViewModel()
     
     override func viewDidLoad() {
@@ -54,11 +56,11 @@ class ViewController: UIViewController {
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         
-        layout.itemSize = CGSize(width: self.view.frame.width * 0.8, height: self.view.frame.height * 0.25)
+        layout.itemSize = CGSize(width: self.view.frame.width * 0.3, height: self.view.frame.height * 0.15)
         layout.scrollDirection = .horizontal
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         let inset = (collectionView.bounds.width - layout.itemSize.width) / 2
-        layout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -84,17 +86,28 @@ class ViewController: UIViewController {
     }
     
     private func setupButton() {
-        self.soolButton = UIButton(frame: self.view.frame)
+        self.soolButton = UIButton()
+        self.refreshButton = UIButton()
         
-        self.view.addSubview(self.soolButton)
+        self.view.addSubview(soolButton)
+        self.view.addSubview(refreshButton)
         
         self.soolButton.translatesAutoresizingMaskIntoConstraints = false
+        self.refreshButton.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             self.soolButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.soolButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.3),
             self.soolButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.05),
             self.soolButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
             
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.refreshButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
+            self.refreshButton.bottomAnchor.constraint(equalTo: self.soolButton.topAnchor, constant: -10),
+            self.refreshButton.widthAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.03),
+            self.refreshButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.03),
         ])
         
         self.soolButton.layer.cornerRadius = self.view.frame.width * 0.3 * 0.15
@@ -105,6 +118,15 @@ class ViewController: UIViewController {
         self.soolButton.setTitleColor(.black, for: .normal)
         self.soolButton.backgroundColor = .white
         self.soolButton.addTarget(self, action: #selector(soolButtonTapped(sender:)), for: .touchUpInside)
+        
+        self.refreshButton.layer.borderWidth = 0.5
+        self.refreshButton.layer.borderColor = UIColor.gray.cgColor
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)
+        let buttonImage = UIImage(systemName: "arrow.clockwise", withConfiguration: imageConfig)
+        self.refreshButton.setImage(buttonImage, for: .normal)
+        self.refreshButton.tintColor = .gray
+        self.refreshButton.backgroundColor = .white
+        self.refreshButton.addTarget(self, action: #selector(refreshButtonTapped(sender:)), for: .touchUpInside)
     }
     
     @objc func soolButtonTapped(sender: UIButton) {
@@ -112,6 +134,11 @@ class ViewController: UIViewController {
         rouletteVC.rouletteViewModel = self.rouletteViewModel
         self.present(rouletteVC, animated: true)
         
+    }
+    
+    @objc func refreshButtonTapped(sender: UIButton) {
+        self.locationManager.startUpdatingLocation()
+        self.locationManager.stopUpdatingLocation()
     }
     
     
@@ -159,14 +186,9 @@ extension ViewController: CLLocationManagerDelegate {
                 marker.mapView = self.mapView
             }
             
+            self.placeListViewModel.getImagesByPlaceName()
+            
             //마커 달아주기
-            
-            
-            
-            
-            
-            
-            
         
         }
         
@@ -288,30 +310,28 @@ extension ViewController: UICollectionViewDelegate {
 extension ViewController: UICollectionViewDelegateFlowLayout {
     
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        guard let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-        
-        
-        
-        // CollectionView Item Size
-        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-        
-        // 이동한 x좌표 값과 item의 크기를 비교 후 페이징 값 설정
-        let estimatedIndex = scrollView.contentOffset.x / cellWidthIncludingSpacing
-        let index: Int
-        
-        // 스크롤 방향 체크
-        // item 절반 사이즈 만큼 스크롤로 판단하여 올림, 내림 처리
-        
-        if velocity.x > 0 {
-            index = Int(ceil(estimatedIndex))
-        } else if velocity.x < 0 {
-            index = Int(floor(estimatedIndex))
-        } else {
-            index = Int(round(estimatedIndex))
-        }
-        // 위 코드를 통해 페이징 될 좌표 값을 targetContentOffset에 대입
-        targetContentOffset.pointee = CGPoint(x: CGFloat(index) * cellWidthIncludingSpacing, y: 0)
-    }
+//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        guard let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+//
+//        // CollectionView Item Size
+//        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
+//
+//        // 이동한 x좌표 값과 item의 크기를 비교 후 페이징 값 설정
+//        let estimatedIndex = scrollView.contentOffset.x / cellWidthIncludingSpacing
+//        let index: Int
+//
+//        // 스크롤 방향 체크
+//        // item 절반 사이즈 만큼 스크롤로 판단하여 올림, 내림 처리
+//
+//        if velocity.x > 0 {
+//            index = Int(ceil(estimatedIndex))
+//        } else if velocity.x < 0 {
+//            index = Int(floor(estimatedIndex))
+//        } else {
+//            index = Int(round(estimatedIndex))
+//        }
+//        // 위 코드를 통해 페이징 될 좌표 값을 targetContentOffset에 대입
+//        targetContentOffset.pointee = CGPoint(x: CGFloat(index) * cellWidthIncludingSpacing, y: 0)
+//    }
 }
 

@@ -17,7 +17,9 @@ class RouletteView: UIView {
     
     var rouletteLayer: CALayer!
     
-    var colors: [UIColor] = [.rouletteBlack ?? .black, .rouletteRed ?? .red, .rouletteGreen ?? .green]
+    var colors: [UIColor] = [.rouletteBlue ?? .blue, .rouletteBlue2 ?? .blue, .rouletteBlue3 ?? .blue, .rouletteBlue4 ?? .blue, .rouletteBlue3 ?? .blue, .rouletteBlue2 ?? .blue]
+    
+    weak var delegate: RouletteViewDelegate?
         
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,11 +50,11 @@ class RouletteView: UIView {
         //중심
         let center = CGPoint(x: width * 0.5, y: height * 0.5)
         //하나의 섹션의 호의 각도
-        let arcAngle = CGFloat((2 * .pi) / CGFloat(sections.count))
+        let arcAngle = CGFloat((2 * Double.pi) / CGFloat(sections.count))
         
         for (index, section) in sections.enumerated() {
-            let startAngle = CGFloat(index) * arcAngle
-            let endAngle = CGFloat(index + 1) * arcAngle
+            let startAngle = CGFloat(index) * arcAngle - CGFloat(Double.pi / 2)
+            let endAngle = CGFloat(index + 1) * arcAngle - CGFloat(Double.pi / 2)
             
             let path = UIBezierPath()
             path.move(to: center)
@@ -73,16 +75,13 @@ class RouletteView: UIView {
             textLayer.string = section
 
             textLayer.fontSize = 14
-            textLayer.foregroundColor = UIColor.rouletteIvory?.cgColor ?? UIColor.white.cgColor
+            textLayer.foregroundColor = UIColor.gray.cgColor
             textLayer.alignmentMode = .center
             textLayer.position = textPosition
             textLayer.isWrapped = true
             textLayer.bounds = CGRect(x: 0, y: 0, width: 28, height: radius * 0.5)
             rouletteLayer.addSublayer(textLayer)
         }
-        
-        
-        
         
     }
     
@@ -111,7 +110,7 @@ class RouletteView: UIView {
         //MARK: - 룰렛회전 버튼
         startButton = UIButton()
         startButton.setTitle("start", for: .normal)
-        startButton.setTitleColor(.rouletteRed, for: .normal)
+        startButton.setTitleColor(.gray, for: .normal)
         self.addSubview(startButton)
         startButton.bringSubviewToFront(self)
         startButton.translatesAutoresizingMaskIntoConstraints = false
@@ -134,7 +133,7 @@ class RouletteView: UIView {
         let duration: CFTimeInterval = 5
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
         let randomNumber = Double.random(in: 0...2)
-        rotationAnimation.byValue = 20 * Double.pi + (randomNumber * Double.pi)
+        rotationAnimation.byValue = -(20 * Double.pi + (randomNumber * Double.pi))
         rotationAnimation.duration = duration
         // easeOut 타이밍 함수를 사용하여 빠르게 시작하고 천천히 멈추게 합니다.
         rotationAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
@@ -143,7 +142,29 @@ class RouletteView: UIView {
         rotationAnimation.isRemovedOnCompletion = false
         
         rouletteLayer.add(rotationAnimation, forKey: "spinRoulette")
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration + 0.5) {
+            if let place = self.getSectionTextBelowArrow(randomNumber: randomNumber) {
+                self.delegate?.getResultFromRoulette(place)
+            }
+        }
     }
+    
+    func getSectionTextBelowArrow(randomNumber: Double) -> String? {
+        let totalSections = sections.count
+        
+//        guard totalSections > 0 else { return nil }
+        let sectionArc = (2 * Double.pi) / Double(totalSections)
+        let randomArc = randomNumber * Double.pi
+        let sectionIndex = Int(floor(randomArc / sectionArc))
+        return sections[sectionIndex]
+        
+    }
+    
+}
+
+protocol RouletteViewDelegate: AnyObject {
+    func getResultFromRoulette(_ place: String)
 }
 
 

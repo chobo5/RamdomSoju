@@ -13,6 +13,9 @@
 		CA0D7C822A89463D002D8B40 /* RouletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D7C812A89463D002D8B40 /* RouletteViewController.swift */; };
 		CA0D7C842A8A6305002D8B40 /* RouletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D7C832A8A6305002D8B40 /* RouletteView.swift */; };
 		CA0D7C862A8BEAC4002D8B40 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D7C852A8BEAC4002D8B40 /* Color+Ext.swift */; };
+		CA0D7C882AA23E76002D8B40 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D7C872AA23E76002D8B40 /* ResultViewController.swift */; };
+		CA0D7C8A2AA248F3002D8B40 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0D7C892AA248F2002D8B40 /* WebKit.framework */; };
+		CA0D7C8C2AA478FC002D8B40 /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D7C8B2AA478FC002D8B40 /* ResultViewModel.swift */; };
 		CA51FD2F2A81192100B68085 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51FD2E2A81192100B68085 /* Helper.swift */; };
 		CA5B1B892A62FB850033AC7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B1B882A62FB850033AC7D /* AppDelegate.swift */; };
 		CA5B1B8B2A62FB850033AC7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B1B8A2A62FB850033AC7D /* SceneDelegate.swift */; };
@@ -32,6 +35,9 @@
 		CA0D7C812A89463D002D8B40 /* RouletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteViewController.swift; sourceTree = "<group>"; };
 		CA0D7C832A8A6305002D8B40 /* RouletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteView.swift; sourceTree = "<group>"; };
 		CA0D7C852A8BEAC4002D8B40 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		CA0D7C872AA23E76002D8B40 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		CA0D7C892AA248F2002D8B40 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		CA0D7C8B2AA478FC002D8B40 /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
 		CA51FD2E2A81192100B68085 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		CA5B1B852A62FB850033AC7D /* RandomSoju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomSoju.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA5B1B882A62FB850033AC7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA0D7C8A2AA248F3002D8B40 /* WebKit.framework in Frameworks */,
 				61BC58C3D01DF3AA4359D318 /* Pods_RandomSoju.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -68,6 +75,7 @@
 		5AA0C21F5E7388D24A90931F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA0D7C892AA248F2002D8B40 /* WebKit.framework */,
 				CAF9BEEF2A66B5E500B00E1C /* libsqlite3.tbd */,
 				CAF9BEEE2A66B5D900B00E1C /* libxml2.tbd */,
 				CAF9BEED2A66B5CA00B00E1C /* libc++.tbd */,
@@ -131,6 +139,7 @@
 				CA5B1B8C2A62FB850033AC7D /* ViewController.swift */,
 				CAB5792E2A6EAD8D00BC4BEE /* UICollectionViewPlaceInfoCell.swift */,
 				CA0D7C812A89463D002D8B40 /* RouletteViewController.swift */,
+				CA0D7C872AA23E76002D8B40 /* ResultViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -149,6 +158,7 @@
 				CAF9BCAD2A64546E00B00E1C /* PlaceListViewModel.swift */,
 				CA0D7C7B2A8377C9002D8B40 /* PlaceCellViewModel.swift */,
 				CA0D7C7F2A894215002D8B40 /* PlaceRouletteViewModel.swift */,
+				CA0D7C8B2AA478FC002D8B40 /* ResultViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -268,11 +278,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF9BCB02A6454A900B00E1C /* PlaceModel.swift in Sources */,
+				CA0D7C8C2AA478FC002D8B40 /* ResultViewModel.swift in Sources */,
 				CA51FD2F2A81192100B68085 /* Helper.swift in Sources */,
 				CA0D7C822A89463D002D8B40 /* RouletteViewController.swift in Sources */,
 				CA5B1B8D2A62FB850033AC7D /* ViewController.swift in Sources */,
 				CAB5792F2A6EAD8D00BC4BEE /* UICollectionViewPlaceInfoCell.swift in Sources */,
 				CA0D7C862A8BEAC4002D8B40 /* Color+Ext.swift in Sources */,
+				CA0D7C882AA23E76002D8B40 /* ResultViewController.swift in Sources */,
 				CA0D7C7C2A8377C9002D8B40 /* PlaceCellViewModel.swift in Sources */,
 				CA0D7C842A8A6305002D8B40 /* RouletteView.swift in Sources */,
 				CA5B1B892A62FB850033AC7D /* AppDelegate.swift in Sources */,

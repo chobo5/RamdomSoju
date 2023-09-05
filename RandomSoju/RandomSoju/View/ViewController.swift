@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     
     var rouletteViewModel = PlaceRouletteViewModel()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMapView()
@@ -44,6 +45,24 @@ class ViewController: UIViewController {
 //            collectionView.reloadItems(at: [IndexPath(item: <#T##Int#>, section: 0)])
             print("placeListViewModel changed")
         }
+        
+        self.placeListViewModel.path?.bind({ [weak self] path in
+            guard let self = self else { return }
+            
+            let pathOverlay = NMFPath()
+            
+            if let path = path?.route?.trafast?[0].path {
+                print("path is updated", path)
+                var NMGLatLngArray: [NMGLatLng] = []
+                NMGLatLngArray = path.compactMap { point in
+                    return NMGLatLng(lat: point[1], lng: point[0])
+                }
+                pathOverlay.path = NMGLineString(points: NMGLatLngArray)
+                pathOverlay.mapView = nil
+                pathOverlay.mapView = mapView
+            }
+        })
+        
     }
     
     private func setupMapView() {
@@ -132,6 +151,8 @@ class ViewController: UIViewController {
     @objc func soolButtonTapped(sender: UIButton) {
         let rouletteVC = RouletteViewController()
         rouletteVC.rouletteViewModel = self.rouletteViewModel
+        rouletteVC.dismissDelegate = self
+        
         self.present(rouletteVC, animated: true)
         
     }
@@ -162,6 +183,8 @@ extension ViewController: CLLocationManagerDelegate {
             
             print("location", currentLatitude, currentLongitude)
             
+            self.placeListViewModel.updateCurrentLocation(lon: String(describing: currentLongitude), lat: String(describing: currentLatitude))
+            
             let camerUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: currentLatitude, lng: currentLongitude), zoomTo: 15.5)
             
             
@@ -186,7 +209,6 @@ extension ViewController: CLLocationManagerDelegate {
                 marker.mapView = self.mapView
             }
             
-            self.placeListViewModel.getImagesByPlaceName()
             
             //마커 달아주기
         
@@ -285,53 +307,19 @@ extension ViewController: UICollectionViewDataSource {
         }
         cell.cellViewModel?.delegate = self.rouletteViewModel
         
-//        if let place = self.placeListViewModel.resultList.value?[indexPath.row] {
-//            cell.cellViewModel = PlaceCellViewModel(place: place)
-//            cell.configure(with: place)
-//            cell.cellViewModel?.delegate = self.rouletteViewModel
-//
-//        }
         return cell
         
     }
     
 }
 
-extension ViewController: UICollectionViewDelegate {
-    
+extension ViewController: UICollectionViewDelegate, DismissDelegate {
+    func dismissAllViewControllers() {
+        self.dismiss(animated: true)
+    }
     
     
 }
 
 
-
-
-
-extension ViewController: UICollectionViewDelegateFlowLayout {
-    
-    
-//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        guard let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-//
-//        // CollectionView Item Size
-//        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-//
-//        // 이동한 x좌표 값과 item의 크기를 비교 후 페이징 값 설정
-//        let estimatedIndex = scrollView.contentOffset.x / cellWidthIncludingSpacing
-//        let index: Int
-//
-//        // 스크롤 방향 체크
-//        // item 절반 사이즈 만큼 스크롤로 판단하여 올림, 내림 처리
-//
-//        if velocity.x > 0 {
-//            index = Int(ceil(estimatedIndex))
-//        } else if velocity.x < 0 {
-//            index = Int(floor(estimatedIndex))
-//        } else {
-//            index = Int(round(estimatedIndex))
-//        }
-//        // 위 코드를 통해 페이징 될 좌표 값을 targetContentOffset에 대입
-//        targetContentOffset.pointee = CGPoint(x: CGFloat(index) * cellWidthIncludingSpacing, y: 0)
-//    }
-}
 

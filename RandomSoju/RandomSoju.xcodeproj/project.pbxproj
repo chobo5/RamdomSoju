@@ -16,6 +16,7 @@
 		CA0D7C882AA23E76002D8B40 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D7C872AA23E76002D8B40 /* ResultViewController.swift */; };
 		CA0D7C8A2AA248F3002D8B40 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0D7C892AA248F2002D8B40 /* WebKit.framework */; };
 		CA0D7C8C2AA478FC002D8B40 /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D7C8B2AA478FC002D8B40 /* ResultViewModel.swift */; };
+		CA0D7C8E2AA6392A002D8B40 /* FindPathModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D7C8D2AA6392A002D8B40 /* FindPathModel.swift */; };
 		CA51FD2F2A81192100B68085 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51FD2E2A81192100B68085 /* Helper.swift */; };
 		CA5B1B892A62FB850033AC7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B1B882A62FB850033AC7D /* AppDelegate.swift */; };
 		CA5B1B8B2A62FB850033AC7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B1B8A2A62FB850033AC7D /* SceneDelegate.swift */; };
@@ -38,6 +39,7 @@
 		CA0D7C872AA23E76002D8B40 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		CA0D7C892AA248F2002D8B40 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		CA0D7C8B2AA478FC002D8B40 /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
+		CA0D7C8D2AA6392A002D8B40 /* FindPathModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPathModel.swift; sourceTree = "<group>"; };
 		CA51FD2E2A81192100B68085 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		CA5B1B852A62FB850033AC7D /* RandomSoju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomSoju.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA5B1B882A62FB850033AC7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				CAF9BCAF2A6454A900B00E1C /* PlaceModel.swift */,
+				CA0D7C8D2AA6392A002D8B40 /* FindPathModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				CA5B1B892A62FB850033AC7D /* AppDelegate.swift in Sources */,
 				CA5B1B8B2A62FB850033AC7D /* SceneDelegate.swift in Sources */,
 				CA0D7C802A894215002D8B40 /* PlaceRouletteViewModel.swift in Sources */,
+				CA0D7C8E2AA6392A002D8B40 /* FindPathModel.swift in Sources */,
 				CAF9BCAE2A64546E00B00E1C /* PlaceListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

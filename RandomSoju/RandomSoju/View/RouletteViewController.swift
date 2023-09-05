@@ -8,10 +8,12 @@
 import UIKit
 
 class RouletteViewController: UIViewController {
-   
+    
     var rouletteViewModel: PlaceRouletteViewModel?
     
     var rouletteView = RouletteView()
+    
+    weak var dismissDelegate: DismissDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,8 @@ class RouletteViewController: UIViewController {
         
     }
     
+    
+
 }
 
 extension RouletteViewController: RouletteViewDelegate {
@@ -50,6 +54,7 @@ extension RouletteViewController: RouletteViewDelegate {
         resultVC.modalPresentationStyle = .overFullScreen
         let placeModel = self.rouletteViewModel?.getPlaceWithName(placeName: place)
         resultVC.viewModel = ResultViewModel(place: placeModel)
+        resultVC.dismissDelegate = self.dismissDelegate
         self.present(resultVC, animated: true)
     }
     

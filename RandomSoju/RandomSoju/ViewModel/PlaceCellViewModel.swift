@@ -12,7 +12,6 @@ import Alamofire
 class PlaceCellViewModel {
     var place: PlaceModel?
     
-    
     weak var delegate: UpdateRouletteList?
     
     var isSelectedChanged: ((PlaceModel) -> Void)?

@@ -18,6 +18,7 @@ class ResultViewController: UIViewController {
     
     var viewModel: ResultViewModel!
     
+    weak var dismissDelegate: DismissDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +95,7 @@ class ResultViewController: UIViewController {
         self.findWayButton.setTitle("길찾기", for: .normal)
         self.findWayButton.setTitleColor(.black, for: .normal)
         
-        
+        self.findWayButton.addTarget(self, action: #selector(findWayButtonTapped(sender:)), for: .touchUpInside)
         self.cancelButton.addTarget(self, action: #selector(cancelButtonTapped(sender:)), for: .touchUpInside)
         
         self.webView.navigationDelegate = self
@@ -104,10 +105,7 @@ class ResultViewController: UIViewController {
     
     private func setupWebView() {
         guard let placeURL = self.viewModel.place?.placeURL else { return }
-        let safePlaceURL = placeURL.replacingOccurrences(of: "http", with: "https")
-
         let url = URL(string: placeURL)
-        print("fasdf",url)
         let urlRequst = URLRequest(url: url!)
         webView.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
         webView.configuration.defaultWebpagePreferences.allowsContentJavaScript = true
@@ -118,6 +116,12 @@ class ResultViewController: UIViewController {
     
     @objc func cancelButtonTapped(sender: UIButton) {
         self.dismiss(animated: true)
+    }
+    
+    @objc func findWayButtonTapped(sender: UIButton) {
+        self.viewModel.findWayButtonTapped()
+        self.dismissDelegate?.dismissAllViewControllers()
+//        self.dismiss(animated: true)
     }
 }
 
@@ -130,4 +134,10 @@ extension ResultViewController: WKNavigationDelegate, WKUIDelegate{
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         print("Navigation Error: \(error.localizedDescription)")
     }
+}
+
+
+
+protocol DismissDelegate: AnyObject {
+    func dismissAllViewControllers()
 }

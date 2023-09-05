@@ -14,9 +14,25 @@ class PlaceListViewModel {
     
     var resultList: Observable<[PlaceModel]>
     
+    var path: Observable<FindPath>?
+    
+    private var currrentLongitude: String?
+    private var currentLatitude: String?
+    
     init() {
         self.resultList = Observable([])
+        self.path = Observable<FindPath>(nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getPath(_:)), name: .findPathFromResultViewModel, object: nil)
         
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func updateCurrentLocation(lon: String, lat: String) {
+        self.currrentLongitude = lon
+        self.currentLatitude = lat
     }
     
     
@@ -40,7 +56,7 @@ class PlaceListViewModel {
                 guard let places = data.places else { return }
                 self.resultList.value = places.sorted{($0.distance ?? "0" < $1.distance ?? "1")}
                 self.resultList.value?.forEach({ place in
-                completion(place)
+                    completion(place)
                 })
             case .failure(let error):
                 print("Error getting places with keyword",error)
@@ -65,37 +81,44 @@ class PlaceListViewModel {
         return cellViewModel
     }
     
-    func getImagesByPlaceName() {
-        resultList.value?.forEach({ place in
-            guard let placeName = place.placeName else { return }
-            let headers: HTTPHeaders = ["Authorization": "KakaoAK e09fde1db2267df1c0fe44526622b1b8",
-                                        "content-type": "application/json;charset=UTF-8"]
-            let parameters: [String: Any] = ["query": placeName]
-            let url = "https://dapi.kakao.com/v2/search/image"
-            AF.request(url,
-                       method: .get,
-                       parameters: parameters,
-                       headers: headers)
-            .responseDecodable(of: ImageResponse.self) { [weak self] response in
-                guard let self = self else { return }
-                switch response.result {
-                case .success(let data):
-                    print(data.images)
-                case .failure(let error):
-                    print("failed to get imageURL", error)
-                }
-                
-                
-            }
-            
-            
-        })
+    @objc func getPath(_ notification: Notification) {
+        guard let data = notification.userInfo?["data"] else { return }
         
+        guard let longitude = self.currrentLongitude else { return }
+        guard let latitude = self.currentLatitude else { return }
+        
+        let url = "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving?"
+        
+        let headers: HTTPHeaders = [
+            "X-NCP-APIGW-API-KEY-ID": "56a1rygin6",
+            "X-NCP-APIGW-API-KEY": "1EmLNvbPpsqng5FyvhS9YDrST48fg1FZm1OR52Tq"
+        ]
+        
+        let parameters: [String: Any] = [
+            "start": longitude + "," + latitude,
+            "goal": data,
+            "option": "trafast"
+            
+        ]
+        
+        AF.request(url,
+                   method: .get,
+                   parameters: parameters,
+                   headers: headers)
+        .responseDecodable(of: FindPath.self) { [weak self] response in
+            guard let self = self else { return }
+            switch response.result {
+            case .success(let data):
+                print("dfsafd",data)
+                self.path?.value = data
+                print("self.path?.value",self.path?.value)
+            case .failure(let error):
+                print("Failed to load Path", error)
+            }
+        }
     }
-                                               
-                                              
-    
-    
     
     
 }
+
+

@@ -7,7 +7,6 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
 import NMapsMap
 
 class PlaceListViewModel {

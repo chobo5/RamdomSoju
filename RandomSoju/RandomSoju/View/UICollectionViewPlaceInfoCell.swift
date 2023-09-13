@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import SnapKit
 
 class UICollectionViewPlaceInfoCell: UICollectionViewCell {
     
@@ -38,37 +39,25 @@ class UICollectionViewPlaceInfoCell: UICollectionViewCell {
         self.contentView.addSubview(phoneLabel)
         self.contentView.addSubview(addButton)
         
-        self.placeNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.distanceLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.phoneLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.addButton.translatesAutoresizingMaskIntoConstraints = false
+        placeNameLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(5)
+            make.leading.trailing.equalToSuperview()
+        }
         
+        distanceLabel.snp.makeConstraints { make in
+            make.top.equalTo(self.placeNameLabel.snp.bottom).offset(5)
+            make.leading.equalToSuperview().offset(5)
+        }
         
-        NSLayoutConstraint.activate([
-            self.placeNameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 7),
-            self.placeNameLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
-        ])
+        phoneLabel.snp.makeConstraints { make in
+            make.top.equalTo(distanceLabel.snp.bottom).offset(5)
+            make.leading.equalToSuperview().offset(5)
+        }
         
-        NSLayoutConstraint.activate([
-            self.distanceLabel.topAnchor.constraint(equalTo: self.placeNameLabel.bottomAnchor, constant: 5),
-            self.distanceLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 5),
-
-
-        ])
-        
-        NSLayoutConstraint.activate([
-            self.phoneLabel.topAnchor.constraint(equalTo: self.distanceLabel.bottomAnchor, constant: 5),
-            self.phoneLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 5),
-
-
-        ])
-        
-        NSLayoutConstraint.activate([
-            self.addButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10),
-            self.addButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -10),
-            self.addButton.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.35),
-            self.addButton.widthAnchor.constraint(equalTo: self.addButton.heightAnchor, multiplier: 1)
-        ])
+        addButton.snp.makeConstraints { make in
+            make.trailing.bottom.equalToSuperview().offset(-10)
+            make.height.width.equalToSuperview().multipliedBy(0.35)
+        }
         
     }
     
@@ -81,6 +70,8 @@ class UICollectionViewPlaceInfoCell: UICollectionViewCell {
         contentView.layer.borderColor = UIColor.lightGray.cgColor
         
         placeNameLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        placeNameLabel.textAlignment = .center
+        placeNameLabel.numberOfLines = 0
         distanceLabel.font = UIFont.systemFont(ofSize: 13)
         phoneLabel.font = UIFont.systemFont(ofSize: 13)
         
@@ -98,6 +89,7 @@ class UICollectionViewPlaceInfoCell: UICollectionViewCell {
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .medium)
         let normalImage = UIImage(systemName: "plus.app", withConfiguration: imageConfig)
         let selectedImage = UIImage(systemName: "checkmark.square.fill", withConfiguration: imageConfig)
+        addButton.tintColor = .sojuGreen
         addButton.setImage(selectedImage, for: .selected)
         addButton.setImage(normalImage, for: .normal)
         

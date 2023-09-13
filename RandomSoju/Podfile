@@ -9,8 +9,8 @@ target 'RandomSoju' do
 
 pod 'NMapsMap'
 pod 'Alamofire'
-pod 'SwiftyJSON', '~> 4.0'
+pod 'SnapKit', '~> 5.6.0'
 pod 'Kingfisher', '~> 7.0'
-pod 'SwiftSoup'
+
 
 end

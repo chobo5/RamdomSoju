@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import SnapKit
 
 class ResultViewController: UIViewController {
     
@@ -40,46 +41,36 @@ class ResultViewController: UIViewController {
         self.webViewGroup.addSubview(cancelButton)
         self.webViewGroup.addSubview(findWayButton)
         
-        self.containerView.translatesAutoresizingMaskIntoConstraints = false
-        self.webViewGroup.translatesAutoresizingMaskIntoConstraints = false
-        self.webView.translatesAutoresizingMaskIntoConstraints = false
-        self.cancelButton.translatesAutoresizingMaskIntoConstraints = false
-        self.findWayButton.translatesAutoresizingMaskIntoConstraints = false
+        containerView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
-        NSLayoutConstraint.activate([
-            self.containerView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.containerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.containerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-        ])
+        webViewGroup.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.height.equalToSuperview().multipliedBy(0.6)
+        }
         
-        NSLayoutConstraint.activate([
-            self.webViewGroup.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.webViewGroup.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            self.webViewGroup.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8),
-            self.webViewGroup.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.6)
-        ])
+        webView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(self.webViewGroup)
+            make.height.equalTo(self.webViewGroup.snp.height).multipliedBy(0.9)
+        }
         
-        NSLayoutConstraint.activate([
-            self.webView.topAnchor.constraint(equalTo: self.webViewGroup.topAnchor),
-            self.webView.leadingAnchor.constraint(equalTo: self.webViewGroup.leadingAnchor),
-            self.webView.trailingAnchor.constraint(equalTo: self.webViewGroup.trailingAnchor),
-            self.webView.heightAnchor.constraint(equalTo: self.webViewGroup.heightAnchor, multiplier: 0.9)
-        ])
+        cancelButton.snp.makeConstraints { make in
+            make.top.equalTo(self.webView.snp.bottom)
+            make.leading.equalTo(self.webViewGroup.snp.leading)
+            make.width.equalTo(self.webViewGroup.snp.width).multipliedBy(0.5)
+            make.height.equalTo(self.webViewGroup.snp.height).multipliedBy(0.1)
+        }
         
-        NSLayoutConstraint.activate([
-            self.cancelButton.topAnchor.constraint(equalTo: self.webView.bottomAnchor),
-            self.cancelButton.leadingAnchor.constraint(equalTo: self.webViewGroup.leadingAnchor),
-            self.cancelButton.widthAnchor.constraint(equalTo: self.webViewGroup.widthAnchor, multiplier: 0.5),
-            self.cancelButton.heightAnchor.constraint(equalTo: self.webViewGroup.heightAnchor, multiplier: 0.1)
-        ])
+        findWayButton.snp.makeConstraints { make in
+            make.top.equalTo(self.webView.snp.bottom)
+            make.trailing.equalTo(self.webViewGroup.snp.trailing)
+            make.width.equalTo(self.webViewGroup.snp.width).multipliedBy(0.5)
+            make.height.equalTo(self.webViewGroup.snp.height).multipliedBy(0.1)
+        }
         
-        NSLayoutConstraint.activate([
-            self.findWayButton.topAnchor.constraint(equalTo: self.webView.bottomAnchor),
-            self.findWayButton.trailingAnchor.constraint(equalTo: self.webViewGroup.trailingAnchor),
-            self.findWayButton.widthAnchor.constraint(equalTo: self.webViewGroup.widthAnchor, multiplier: 0.5),
-            self.findWayButton.heightAnchor.constraint(equalTo: self.webViewGroup.heightAnchor, multiplier: 0.1)
-        ])
+        
         
         self.containerView.backgroundColor = .black
         self.containerView.alpha = 0.5
@@ -134,9 +125,16 @@ extension ResultViewController: WKNavigationDelegate, WKUIDelegate{
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         print("Navigation Error: \(error.localizedDescription)")
     }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        print("didStartProvisionalNavigation")
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("didFinish")
+
+    }
 }
-
-
 
 protocol DismissDelegate: AnyObject {
     func dismissAllViewControllers()

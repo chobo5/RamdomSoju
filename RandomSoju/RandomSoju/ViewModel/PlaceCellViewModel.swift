@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftSoup
 import Alamofire
 
 class PlaceCellViewModel {
@@ -34,12 +33,7 @@ class PlaceCellViewModel {
             }
         }
     }
-    
-    
-    
 
-    
-   
 }
 
 protocol UpdateRouletteList: AnyObject {

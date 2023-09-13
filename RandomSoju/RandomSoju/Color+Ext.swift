@@ -16,4 +16,5 @@ extension UIColor {
     class var rouletteBlue2: UIColor? { return UIColor(named: "rouletteBlue2")}
     class var rouletteBlue3: UIColor? { return UIColor(named: "rouletteBlue3")}
     class var rouletteBlue4: UIColor? { return UIColor(named: "rouletteBlue4")}
+    class var sojuGreen: UIColor? { return UIColor(named: "sojuGreen")}
 }

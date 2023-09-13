@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class RouletteView: UIView {
     
@@ -65,10 +66,7 @@ class RouletteView: UIView {
             shapeLayer.path = path.cgPath
             shapeLayer.fillColor = colors[index % colors.count].cgColor
             rouletteLayer.addSublayer(shapeLayer)
-//            colors[index % colors.count].setFill()
-//            path.fill()
-            
-            
+
             let textLayer = CATextLayer()
             let angle = startAngle + (arcAngle * 0.5)
             let textPosition = CGPoint(x: center.x + (radius * 0.6 * cos(angle)), y: center.y + (radius * 0.6 * sin(angle)))
@@ -95,13 +93,12 @@ class RouletteView: UIView {
         //MARK: - 룰레의 화살표 이미지뷰
         arrowImageView = UIImageView(image: UIImage(systemName: "arrowshape.right.fill"))
         self.addSubview(arrowImageView)
-        arrowImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            arrowImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            arrowImageView.bottomAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            arrowImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.1),
-            arrowImageView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.1)
-        ])
+        
+        arrowImageView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(self.snp.top).offset(10)
+            make.width.height.equalTo(self.snp.width).multipliedBy(0.1)
+        }
         arrowImageView.transform = arrowImageView.transform.rotated(by: .pi / 2)
         arrowImageView.tintColor = .red
     }
@@ -113,13 +110,12 @@ class RouletteView: UIView {
         startButton.setTitleColor(.gray, for: .normal)
         self.addSubview(startButton)
         startButton.bringSubviewToFront(self)
-        startButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            startButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            startButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            startButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.15),
-            startButton.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.15)
-        ])
+        
+        startButton.snp.makeConstraints { make in
+            make.center.equalTo(self.snp.center)
+            make.width.height.equalTo(self.snp.width).multipliedBy(0.15)
+        }
+        
         startButton.backgroundColor = UIColor.rouletteIvory
         startButton.layer.borderWidth = 1
         startButton.layer.borderColor = UIColor.black.cgColor

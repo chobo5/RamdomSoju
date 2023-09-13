@@ -8,8 +8,8 @@
 import UIKit
 import CoreLocation
 import Alamofire
-import SwiftyJSON
 import NMapsMap
+import SnapKit
 
 
 class ViewController: UIViewController {
@@ -27,6 +27,8 @@ class ViewController: UIViewController {
     private var refreshButton: UIButton!
     
     var rouletteViewModel = PlaceRouletteViewModel()
+    
+    private let pathOverlay = NMFPath()
     
     
     override func viewDidLoad() {
@@ -49,16 +51,15 @@ class ViewController: UIViewController {
         self.placeListViewModel.path?.bind({ [weak self] path in
             guard let self = self else { return }
             
-            let pathOverlay = NMFPath()
-            
             if let path = path?.route?.trafast?[0].path {
                 print("path is updated", path)
                 var NMGLatLngArray: [NMGLatLng] = []
+                
                 NMGLatLngArray = path.compactMap { point in
                     return NMGLatLng(lat: point[1], lng: point[0])
                 }
                 pathOverlay.path = NMGLineString(points: NMGLatLngArray)
-                pathOverlay.mapView = nil
+                
                 pathOverlay.mapView = mapView
             }
         })
@@ -74,33 +75,25 @@ class ViewController: UIViewController {
     
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
-        
-        layout.itemSize = CGSize(width: self.view.frame.width * 0.3, height: self.view.frame.height * 0.15)
-        layout.scrollDirection = .horizontal
+
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        let inset = (collectionView.bounds.width - layout.itemSize.width) / 2
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-        
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(UICollectionViewPlaceInfoCell.self, forCellWithReuseIdentifier: "placeInfoCell")
         collectionView.backgroundColor = .clear
         
-        collectionView.decelerationRate = .fast
-        collectionView.isPagingEnabled = false
-        
-        
         self.view.addSubview(self.collectionView)
         
-        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.collectionView.bottomAnchor.constraint(equalTo: self.soolButton.topAnchor, constant: -20),
-            self.collectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.25)
-            
-        ])
         
+        collectionView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(self.soolButton.snp.top).offset(-30)
+            make.height.equalToSuperview().multipliedBy(0.15)
+        }
+
+        layout.itemSize = CGSize(width: self.view.frame.width * 0.35, height: self.view.frame.height * 0.15)
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         
     }
     
@@ -114,20 +107,18 @@ class ViewController: UIViewController {
         self.soolButton.translatesAutoresizingMaskIntoConstraints = false
         self.refreshButton.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([
-            self.soolButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.soolButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.3),
-            self.soolButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.05),
-            self.soolButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
-            
-        ])
+        soolButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.3)
+            make.height.equalToSuperview().multipliedBy(0.05)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+        }
         
-        NSLayoutConstraint.activate([
-            self.refreshButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
-            self.refreshButton.bottomAnchor.constraint(equalTo: self.soolButton.topAnchor, constant: -10),
-            self.refreshButton.widthAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.03),
-            self.refreshButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.03),
-        ])
+        refreshButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-15)
+            make.top.equalTo(self.soolButton.snp.top)
+            make.width.height.equalTo(self.view.snp.height).multipliedBy(0.04)
+        }
         
         self.soolButton.layer.cornerRadius = self.view.frame.width * 0.3 * 0.15
         self.soolButton.layer.borderWidth = 1.0
@@ -158,6 +149,7 @@ class ViewController: UIViewController {
     }
     
     @objc func refreshButtonTapped(sender: UIButton) {
+        print("refreshButtonTapped")
         self.locationManager.startUpdatingLocation()
         self.locationManager.stopUpdatingLocation()
     }

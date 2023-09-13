@@ -14,8 +14,8 @@
             filePath = "RandomSoju/View/UICollectionViewPlaceInfoCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "addButtonTapped(sender:)"
             landmarkType = "7">
             <Locations>
@@ -62,8 +62,8 @@
             filePath = "RandomSoju/View/UICollectionViewPlaceInfoCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "addButtonTapped(sender:)"
             landmarkType = "7">
             <Locations>
@@ -110,8 +110,8 @@
             filePath = "RandomSoju/View/UICollectionViewPlaceInfoCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "addButtonTapped(sender:)"
             landmarkType = "7">
             <Locations>
@@ -158,8 +158,8 @@
             filePath = "RandomSoju/ViewModel/PlaceCellViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "updateSelectedPlace()"
             landmarkType = "7">
             <Locations>
@@ -206,8 +206,8 @@
             filePath = "RandomSoju/View/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
             <Locations>

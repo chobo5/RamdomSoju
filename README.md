@@ -51,6 +51,3 @@
 </p>
 
 
-### 영상
-![rouletteAnimation](https://github.com/chobo5/RandomSoju/assets/102145785/65c518bc-dbdf-4568-be58-fcf01f6def3d)
-

@@ -52,6 +52,5 @@
 
 
 ### 영상
-![rouletteAnimation](https://github.com/chobo5/RandomSoju/assets/102145785/65c518bc-dbdf-4568-be58-fcf01f6def3d){: width="50%"}
-![RPReplay_Final1694763638](https://github.com/chobo5/RandomSoju/assets/102145785/241663d7-6fba-446a-8af3-186ac7c63f2a){: width="100%"}
+![rouletteAnimation](https://github.com/chobo5/RandomSoju/assets/102145785/65c518bc-dbdf-4568-be58-fcf01f6def3d)
 

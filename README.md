@@ -1,5 +1,7 @@
 # 경우의술(RamdomSoju)
 
+
+
 ## 💡 아이디어 및 기획
 
 친구와 자주가지 않던곳에서 어느 술집을 가야할지를 고민하던중 특정한 반경안의 술집을 랜덤으로 추천해준다면 재미있겠다는 아이디어를 가지고 앱을 기획하게 되었습니다.
@@ -47,3 +49,9 @@
   <img src="https://github.com/chobo5/RandomSoju/assets/102145785/76b17c76-4476-433d-93e7-5820ac53bab5" align="center" width="40%">
   <img src="https://github.com/chobo5/RandomSoju/assets/102145785/3c6d4303-e0cb-4962-bfaf-f58cf0685644" align="center" width="40%">
 </p>
+
+
+### 영상
+![rouletteAnimation](https://github.com/chobo5/RandomSoju/assets/102145785/65c518bc-dbdf-4568-be58-fcf01f6def3d){: width="50%"}
+![RPReplay_Final1694763638](https://github.com/chobo5/RandomSoju/assets/102145785/241663d7-6fba-446a-8af3-186ac7c63f2a){: width="100%"}
+
